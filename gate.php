@@ -1,3 +1,6 @@
+<?php session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,18 +13,22 @@
     
     <main>
         <section>
-            <div class="container">
-                <div class="row">
-                    <div class="col">
+            <div class="container p-3">
+                <div class="row mt-5">
+                    <div class="col border border-secondary p-3 rounded shadow">
                         <form action="" method="post">
+                        <h4 class="text-primary">Login Page</h4>
+                        <p class="text-primary">If you administrator please Login</p>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email address</label>
                                 <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
                             </div>
                             <div class="mb-3">
-                                <label for="pass" class="form-label">Example textarea</label>
+                                <label for="pass" class="form-label">Password</label>
                                 <input type="text" class="form-control" id="pass" name="pass" placeholder="name@example.com">
                             </div>
+                            <button type="submit" class="me-2 btn btn-primary shadow mt-4">Log in</button>
+                            <button type="button" class="me-2 btn btn-outline-light text-body shadow mt-4">Registration</button>
                         </form>
                     </div>
                 </div>
