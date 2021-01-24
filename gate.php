@@ -1,5 +1,11 @@
-<?php session_start();
-
+<?php session_start(); require 'functions.php';
+    // if(!isset($_SESSION['login'])) {
+    //     header("Location: gate.php");
+    // }
+    if(isset($_POST['login'])) {
+        login($_POST);
+        exit;
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,9 +31,9 @@
                             </div>
                             <div class="mb-3">
                                 <label for="pass" class="form-label">Password</label>
-                                <input type="text" class="form-control" id="pass" name="pass" placeholder="name@example.com">
+                                <input type="password" class="form-control" id="pass" name="pass" placeholder="name@example.com">
                             </div>
-                            <button type="submit" class="me-2 btn btn-primary shadow mt-4">Log in</button>
+                            <button type="submit" class="me-2 btn btn-primary shadow mt-4" name="login">Log in</button>
                             <button type="button" class="me-2 btn btn-outline-light text-body shadow mt-4">Registration</button>
                         </form>
                     </div>
