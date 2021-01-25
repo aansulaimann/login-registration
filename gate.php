@@ -1,10 +1,17 @@
 <?php session_start(); require 'functions.php';
-    // if(!isset($_SESSION['login'])) {
-    //     header("Location: gate.php");
-    // }
-    if(isset($_POST['login'])) {
-        login($_POST);
+    if(isset($_SESSION["login"])) {
+        header("Location: http://localhost/simple-login/");
         exit;
+    }
+
+    if(isset($_POST['btn_login'])) {
+        if(login($_POST) === TRUE) {
+            $_SESSION['login'] = true;
+            header('Location: home.php');
+            exit;
+        } else {
+            echo 'username / password salah';
+        }
     }
 ?>
 <!DOCTYPE html>
@@ -31,9 +38,9 @@
                             </div>
                             <div class="mb-3">
                                 <label for="pass" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="pass" name="pass" placeholder="name@example.com">
+                                <input type="password" class="form-control" id="pass" name="pass">
                             </div>
-                            <button type="submit" class="me-2 btn btn-primary shadow mt-4" name="login">Log in</button>
+                            <button type="submit" class="me-2 btn btn-primary shadow mt-4" name="btn_login">Log in</button>
                             <button type="button" class="me-2 btn btn-outline-light text-body shadow mt-4">Registration</button>
                         </form>
                     </div>
