@@ -27,6 +27,18 @@
                     </div>';
         }
     }
+
+    if(isset($_POST['cNewPwd'])) {
+        if(resetPass($_POST) > 0) {
+            echo $err = '<div class="alert alert-primary" role="alert">
+                          Success Reset Password.
+                        </div>';
+        } else {
+            echo $err = '<div class="alert alert-danger" role="alert">
+                        Invalid Reset Password.
+                    </div>';
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,7 +64,8 @@
                             </div>
                             <div class="mb-3">
                                 <label for="pass" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="pass" name="pass">
+                                <input type="password" class="form-control mb-3" id="pass" name="pass">
+                                <button type="button" class="text-info fst-italic bg-transparent border-0" data-bs-toggle="modal" data-bs-target="#exampleModal2">forgot password ?</button>
                             </div>
                             <button type="submit" class="me-2 btn btn-primary shadow mt-4" name="btn_login">Sign in</button>
                             <!-- Button trigger modal -->
@@ -63,43 +76,79 @@
                     </div>
                 </div>
             </div>
+            <!-- Modal add new account -->
+            <form action="" method="post">
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="john" name="username" autocomplete="off">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="email" autocomplete="off">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="exampleFormControlInput1" name="pass" autocomplete="off">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Confitm Password</label>
+                                <input type="password" class="form-control" id="exampleFormControlInput1" name="confirmPass" autocomplete="off">
+                            </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" name="reg">Create account</button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!-- end Modal add new account -->
         </section>
     </main>
 
-    <!-- Modal -->
+    <!-- Modal forget password -->
     <form action="" method="post">
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Forgot Password</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <!-- <div class="mb-3">
+                        <label for="input1" class="form-label">username</label>
+                        <input type="text" class="form-control" id="input1" placeholder="john" name="username">
+                    </div> -->
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="john" name="username">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="john@mail.com" name="email" autocomplete="off">
                     </div>
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="email">
+                        <label for="npwd" class="form-label">New password</label>
+                        <input type="password" class="form-control" id="npwd" name="npwd" autocomplete="off">
                     </div>
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="exampleFormControlInput1" name="pass">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Confitm Password</label>
-                        <input type="password" class="form-control" id="exampleFormControlInput1" name="confirmPass">
+                        <label for="cpwd" class="form-label">Confirm new Password</label>
+                        <input type="password" class="form-control" id="cpwd" name="cNewPassword" autocomplete="off">
                     </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" name="reg">Create account</button>
+                    <button type="submit" class="btn btn-primary" name="cNewPwd">Reset password</button>
                 </div>
                 </div>
             </div>
         </div>
     </form>
+    <!-- end Modal forget password -->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>    
 </body>
