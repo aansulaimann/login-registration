@@ -31,6 +31,6 @@ Login Registration and Reset Password With PHP
 > Create a new database. Name it 'simplelogin'
 
 # Create 2 tables :
-> user
-> The user table should contain 3 columns ID, username ,email and password. (For Example: )
+> CREATE TABLE `user`.
+> The user table should contain 3 columns Id, username ,email and password.
 > OR using sql file 
