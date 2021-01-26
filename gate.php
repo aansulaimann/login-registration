@@ -10,8 +10,9 @@
             header('Location: home.php');
             exit;
         } else {
-            echo 'username / password salah';
-            exit;
+            echo $err = '<div class="alert alert-danger" role="alert">
+                        Invalid Sign In.
+                    </div>';
         }
     }
 

@@ -9,17 +9,35 @@ function login($data) {
     $email = htmlspecialchars(trim($data['email']));
     $password = htmlspecialchars(trim($data['pass']));
 
-    $query = "SELECT username, email, password FROM user WHERE email = '$email'";
+    $query = "SELECT email, password FROM user WHERE email = '$email'";
     $res = mysqli_query($conn, $query);
-
+    
     if(mysqli_num_rows($res) === 1) {
         $fetch = mysqli_fetch_assoc($res);
         if(password_verify($password, $fetch['password'])) {
-            // return true;
-            return mysqli_affected_rows($conn);
+            return 1;
         }
+
+        // $q = "SELECT username, email, password FROM user WHERE email = '$email' and password = ";
+        // var_dump($q); die;
+        // mysqli_query($conn, $q);
+        // return mysqli_affected_rows($conn);
+
+    } else {
+        return false;
     }
-    exit;
+
+
+
+    // if(mysqli_num_rows($res) === 1) {
+    //     $fetch = mysqli_fetch_assoc($res);
+    //     if(password_verify($password, $fetch['password'])) {
+    //         // return true;
+    //         // return mysqli_affected_rows($conn);
+    //     }
+    // }
+    // exit;
+    // return mysqli_affected_rows($conn);
 }
 
 function logout() {
